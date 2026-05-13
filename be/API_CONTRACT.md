@@ -21,27 +21,27 @@ Most application-layer errors use this JSON shape:
 
 ```json
 {
-  "error": "Human-readable message"
+    "error": "Human-readable message"
 }
 ```
 
 Typical status mapping:
 
-| Status | Meaning |
-|---|---|
-| `400` | Validation error / invalid payload |
-| `401` | Missing or invalid authentication |
-| `403` | Authenticated but not allowed |
-| `404` | Resource not found |
-| `409` | Conflict, such as duplicate email |
-| `500` | Unhandled server error |
-| `503` | Infrastructure dependency unavailable, such as MongoDB |
+| Status | Meaning                                                |
+| ------ | ------------------------------------------------------ |
+| `400`  | Validation error / invalid payload                     |
+| `401`  | Missing or invalid authentication                      |
+| `403`  | Authenticated but not allowed                          |
+| `404`  | Resource not found                                     |
+| `409`  | Conflict, such as duplicate email                      |
+| `500`  | Unhandled server error                                 |
+| `503`  | Infrastructure dependency unavailable, such as MongoDB |
 
 If a protected endpoint is called without a bearer token, the response is:
 
 ```json
 {
-  "error": "Authorization token is missing"
+    "error": "Authorization token is missing"
 }
 ```
 
@@ -89,8 +89,8 @@ Response `200`
 
 ```json
 {
-  "status": "ok",
-  "message": "Backend is running"
+    "status": "ok",
+    "message": "Backend is running"
 }
 ```
 
@@ -102,13 +102,13 @@ Response `200`
 
 ```json
 {
-  "status": "ok",
-  "mongo": {
-    "configured": true,
-    "connected": true,
-    "db_name": "dungne",
-    "error": null
-  }
+    "status": "ok",
+    "mongo": {
+        "configured": true,
+        "connected": true,
+        "db_name": "dungne",
+        "error": null
+    }
 }
 ```
 
@@ -129,12 +129,12 @@ Request body:
 
 ```json
 {
-  "fullName": "Alice Nguyen",
-  "email": "alice@example.com",
-  "password": "secret123",
-  "urlAvatar": "https://example.com/avatar.png",
-  "phoneNumber": "0123456789",
-  "role": "USER"
+    "fullName": "Alice Nguyen",
+    "email": "alice@example.com",
+    "password": "secret123",
+    "urlAvatar": "https://example.com/avatar.png",
+    "phoneNumber": "0123456789",
+    "role": "USER"
 }
 ```
 
@@ -148,19 +148,19 @@ Response `201`
 
 ```json
 {
-  "message": "User registered successfully",
-  "user": {
-    "id": "6813d17e8f1d9d8f8f8f8f8f",
-    "_id": "6813d17e8f1d9d8f8f8f8f8f",
-    "fullName": "Alice Nguyen",
-    "email": "alice@example.com",
-    "urlAvatar": "https://example.com/avatar.png",
-    "role": "USER",
-    "phoneNumber": "0123456789",
-    "status": "ACTIVE",
-    "createdAt": "2026-05-01T16:00:00.000Z",
-    "updatedAt": "2026-05-01T16:00:00.000Z"
-  }
+    "message": "User registered successfully",
+    "user": {
+        "id": "6813d17e8f1d9d8f8f8f8f8f",
+        "_id": "6813d17e8f1d9d8f8f8f8f8f",
+        "fullName": "Alice Nguyen",
+        "email": "alice@example.com",
+        "urlAvatar": "https://example.com/avatar.png",
+        "role": "USER",
+        "phoneNumber": "0123456789",
+        "status": "ACTIVE",
+        "createdAt": "2026-05-01T16:00:00.000Z",
+        "updatedAt": "2026-05-01T16:00:00.000Z"
+    }
 }
 ```
 
@@ -177,8 +177,8 @@ Request body:
 
 ```json
 {
-  "email": "alice@example.com",
-  "password": "secret123"
+    "email": "alice@example.com",
+    "password": "secret123"
 }
 ```
 
@@ -186,20 +186,20 @@ Response `200`
 
 ```json
 {
-  "message": "Login successful",
-  "access_token": "<jwt>",
-  "user": {
-    "id": "6813d17e8f1d9d8f8f8f8f8f",
-    "_id": "6813d17e8f1d9d8f8f8f8f8f",
-    "fullName": "Alice Nguyen",
-    "email": "alice@example.com",
-    "urlAvatar": "",
-    "role": "MANAGER",
-    "phoneNumber": "",
-    "status": "ACTIVE",
-    "createdAt": "2026-05-01T16:00:00.000Z",
-    "updatedAt": "2026-05-01T16:00:00.000Z"
-  }
+    "message": "Login successful",
+    "access_token": "<jwt>",
+    "user": {
+        "id": "6813d17e8f1d9d8f8f8f8f8f",
+        "_id": "6813d17e8f1d9d8f8f8f8f8f",
+        "fullName": "Alice Nguyen",
+        "email": "alice@example.com",
+        "urlAvatar": "",
+        "role": "MANAGER",
+        "phoneNumber": "",
+        "status": "ACTIVE",
+        "createdAt": "2026-05-01T16:00:00.000Z",
+        "updatedAt": "2026-05-01T16:00:00.000Z"
+    }
 }
 ```
 
@@ -219,7 +219,7 @@ Response `200`
 
 ```json
 {
-  "message": "Logout successful. Remove the token on the client."
+    "message": "Logout successful. Remove the token on the client."
 }
 ```
 
@@ -233,16 +233,16 @@ Response `200`
 
 ```json
 {
-  "id": "6813d17e8f1d9d8f8f8f8f8f",
-  "_id": "6813d17e8f1d9d8f8f8f8f8f",
-  "fullName": "Alice Nguyen",
-  "email": "alice@example.com",
-  "urlAvatar": "",
-  "role": "MANAGER",
-  "phoneNumber": "",
-  "status": "ACTIVE",
-  "createdAt": "2026-05-01T16:00:00.000Z",
-  "updatedAt": "2026-05-01T16:00:00.000Z"
+    "id": "6813d17e8f1d9d8f8f8f8f8f",
+    "_id": "6813d17e8f1d9d8f8f8f8f8f",
+    "fullName": "Alice Nguyen",
+    "email": "alice@example.com",
+    "urlAvatar": "",
+    "role": "MANAGER",
+    "phoneNumber": "",
+    "status": "ACTIVE",
+    "createdAt": "2026-05-01T16:00:00.000Z",
+    "updatedAt": "2026-05-01T16:00:00.000Z"
 }
 ```
 
@@ -256,8 +256,8 @@ Request body:
 
 ```json
 {
-  "currentPassword": "secret123",
-  "newPassword": "new-secret456"
+    "currentPassword": "secret123",
+    "newPassword": "new-secret456"
 }
 ```
 
@@ -265,7 +265,7 @@ Response `200`
 
 ```json
 {
-  "message": "Password changed successfully"
+    "message": "Password changed successfully"
 }
 ```
 
@@ -287,18 +287,18 @@ Response `200`
 
 ```json
 [
-  {
-    "id": "6813d17e8f1d9d8f8f8f8f8f",
-    "_id": "6813d17e8f1d9d8f8f8f8f8f",
-    "fullName": "Alice Nguyen",
-    "email": "alice@example.com",
-    "urlAvatar": "",
-    "role": "MANAGER",
-    "phoneNumber": "",
-    "status": "ACTIVE",
-    "createdAt": "2026-05-01T16:00:00.000Z",
-    "updatedAt": "2026-05-01T16:00:00.000Z"
-  }
+    {
+        "id": "6813d17e8f1d9d8f8f8f8f8f",
+        "_id": "6813d17e8f1d9d8f8f8f8f8f",
+        "fullName": "Alice Nguyen",
+        "email": "alice@example.com",
+        "urlAvatar": "",
+        "role": "MANAGER",
+        "phoneNumber": "",
+        "status": "ACTIVE",
+        "createdAt": "2026-05-01T16:00:00.000Z",
+        "updatedAt": "2026-05-01T16:00:00.000Z"
+    }
 ]
 ```
 
@@ -318,16 +318,16 @@ Response `200`
 
 ```json
 {
-  "id": "6813d17e8f1d9d8f8f8f8f8f",
-  "_id": "6813d17e8f1d9d8f8f8f8f8f",
-  "fullName": "Alice Nguyen",
-  "email": "alice@example.com",
-  "urlAvatar": "",
-  "role": "MANAGER",
-  "phoneNumber": "",
-  "status": "ACTIVE",
-  "createdAt": "2026-05-01T16:00:00.000Z",
-  "updatedAt": "2026-05-01T16:00:00.000Z"
+    "id": "6813d17e8f1d9d8f8f8f8f8f",
+    "_id": "6813d17e8f1d9d8f8f8f8f8f",
+    "fullName": "Alice Nguyen",
+    "email": "alice@example.com",
+    "urlAvatar": "",
+    "role": "MANAGER",
+    "phoneNumber": "",
+    "status": "ACTIVE",
+    "createdAt": "2026-05-01T16:00:00.000Z",
+    "updatedAt": "2026-05-01T16:00:00.000Z"
 }
 ```
 
@@ -341,11 +341,11 @@ Request body:
 
 ```json
 {
-  "fullName": "Alice Updated",
-  "phoneNumber": "0987654321",
-  "urlAvatar": "https://example.com/avatar-2.png",
-  "role": "ADMIN",
-  "status": "ACTIVE"
+    "fullName": "Alice Updated",
+    "phoneNumber": "0987654321",
+    "urlAvatar": "https://example.com/avatar-2.png",
+    "role": "ADMIN",
+    "status": "ACTIVE"
 }
 ```
 
@@ -362,16 +362,16 @@ Response `200`
 
 ```json
 {
-  "id": "6813d17e8f1d9d8f8f8f8f8f",
-  "_id": "6813d17e8f1d9d8f8f8f8f8f",
-  "fullName": "Alice Updated",
-  "email": "alice@example.com",
-  "urlAvatar": "https://example.com/avatar-2.png",
-  "role": "ADMIN",
-  "phoneNumber": "0987654321",
-  "status": "ACTIVE",
-  "createdAt": "2026-05-01T16:00:00.000Z",
-  "updatedAt": "2026-05-01T16:10:00.000Z"
+    "id": "6813d17e8f1d9d8f8f8f8f8f",
+    "_id": "6813d17e8f1d9d8f8f8f8f8f",
+    "fullName": "Alice Updated",
+    "email": "alice@example.com",
+    "urlAvatar": "https://example.com/avatar-2.png",
+    "role": "ADMIN",
+    "phoneNumber": "0987654321",
+    "status": "ACTIVE",
+    "createdAt": "2026-05-01T16:00:00.000Z",
+    "updatedAt": "2026-05-01T16:10:00.000Z"
 }
 ```
 
@@ -391,16 +391,16 @@ Response `200`
 
 ```json
 {
-  "id": "6813d17e8f1d9d8f8f8f8f8f",
-  "_id": "6813d17e8f1d9d8f8f8f8f8f",
-  "fullName": "Alice Nguyen",
-  "email": "alice@example.com",
-  "urlAvatar": "",
-  "role": "MANAGER",
-  "phoneNumber": "",
-  "status": "INACTIVE",
-  "createdAt": "2026-05-01T16:00:00.000Z",
-  "updatedAt": "2026-05-01T16:20:00.000Z"
+    "id": "6813d17e8f1d9d8f8f8f8f8f",
+    "_id": "6813d17e8f1d9d8f8f8f8f8f",
+    "fullName": "Alice Nguyen",
+    "email": "alice@example.com",
+    "urlAvatar": "",
+    "role": "MANAGER",
+    "phoneNumber": "",
+    "status": "INACTIVE",
+    "createdAt": "2026-05-01T16:00:00.000Z",
+    "updatedAt": "2026-05-01T16:20:00.000Z"
 }
 ```
 
@@ -418,12 +418,12 @@ Request body:
 
 ```json
 {
-  "sensorName": "Pond A",
-  "location": {
-    "longitude": 106.6297,
-    "latitude": 10.8231
-  },
-  "status": "OFFLINE"
+    "sensorName": "Pond A",
+    "location": {
+        "longitude": 106.6297,
+        "latitude": 10.8231
+    },
+    "status": "OFFLINE"
 }
 ```
 
@@ -439,20 +439,20 @@ Response `201`
 
 ```json
 {
-  "message": "Sensor station created successfully",
-  "sensor": {
-    "_id": "6813d2e88f1d9d8f8f8f8f90",
-    "sensorName": "Pond A",
-    "userId": "6813d17e8f1d9d8f8f8f8f8f",
-    "location": {
-      "longitude": 106.6297,
-      "latitude": 10.8231
-    },
-    "status": "OFFLINE",
-    "isDeleted": false,
-    "dateCreated": "2026-05-01T16:00:00.000Z",
-    "lastDateUpdate": "2026-05-01T16:00:00.000Z"
-  }
+    "message": "Sensor station created successfully",
+    "sensor": {
+        "_id": "6813d2e88f1d9d8f8f8f8f90",
+        "sensorName": "Pond A",
+        "userId": "6813d17e8f1d9d8f8f8f8f8f",
+        "location": {
+            "longitude": 106.6297,
+            "latitude": 10.8231
+        },
+        "status": "OFFLINE",
+        "isDeleted": false,
+        "dateCreated": "2026-05-01T16:00:00.000Z",
+        "lastDateUpdate": "2026-05-01T16:00:00.000Z"
+    }
 }
 ```
 
@@ -462,38 +462,38 @@ Lists sensor stations for the authenticated user.
 
 Query parameters:
 
-| Name | Type | Default | Notes |
-|---|---|---|---|
-| `page` | integer | `1` | Must be positive |
-| `limit` | integer | `10` | Must be positive; effective maximum is `100` |
-| `status` | string | none | Accepted values: `ONLINE`, `OFFLINE` |
+| Name     | Type    | Default | Notes                                        |
+| -------- | ------- | ------- | -------------------------------------------- |
+| `page`   | integer | `1`     | Must be positive                             |
+| `limit`  | integer | `10`    | Must be positive; effective maximum is `100` |
+| `status` | string  | none    | Accepted values: `ONLINE`, `OFFLINE`         |
 
 Response `200`
 
 ```json
 {
-  "message": "Sensor stations fetched successfully",
-  "data": [
-    {
-      "_id": "6813d2e88f1d9d8f8f8f8f90",
-      "sensorName": "Pond A",
-      "userId": "6813d17e8f1d9d8f8f8f8f8f",
-      "location": {
-        "longitude": 106.6297,
-        "latitude": 10.8231
-      },
-      "status": "ONLINE",
-      "isDeleted": false,
-      "dateCreated": "2026-05-01T16:00:00.000Z",
-      "lastDateUpdate": "2026-05-01T16:30:00.000Z"
+    "message": "Sensor stations fetched successfully",
+    "data": [
+        {
+            "_id": "6813d2e88f1d9d8f8f8f8f90",
+            "sensorName": "Pond A",
+            "userId": "6813d17e8f1d9d8f8f8f8f8f",
+            "location": {
+                "longitude": 106.6297,
+                "latitude": 10.8231
+            },
+            "status": "ONLINE",
+            "isDeleted": false,
+            "dateCreated": "2026-05-01T16:00:00.000Z",
+            "lastDateUpdate": "2026-05-01T16:30:00.000Z"
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "limit": 10,
+        "total": 1,
+        "totalPages": 1
     }
-  ],
-  "pagination": {
-    "page": 1,
-    "limit": 10,
-    "total": 1,
-    "totalPages": 1
-  }
 }
 ```
 
@@ -505,20 +505,20 @@ Response `200`
 
 ```json
 {
-  "message": "Sensor station fetched successfully",
-  "sensor": {
-    "_id": "6813d2e88f1d9d8f8f8f8f90",
-    "sensorName": "Pond A",
-    "userId": "6813d17e8f1d9d8f8f8f8f8f",
-    "location": {
-      "longitude": 106.6297,
-      "latitude": 10.8231
-    },
-    "status": "ONLINE",
-    "isDeleted": false,
-    "dateCreated": "2026-05-01T16:00:00.000Z",
-    "lastDateUpdate": "2026-05-01T16:30:00.000Z"
-  }
+    "message": "Sensor station fetched successfully",
+    "sensor": {
+        "_id": "6813d2e88f1d9d8f8f8f8f90",
+        "sensorName": "Pond A",
+        "userId": "6813d17e8f1d9d8f8f8f8f8f",
+        "location": {
+            "longitude": 106.6297,
+            "latitude": 10.8231
+        },
+        "status": "ONLINE",
+        "isDeleted": false,
+        "dateCreated": "2026-05-01T16:00:00.000Z",
+        "lastDateUpdate": "2026-05-01T16:30:00.000Z"
+    }
 }
 ```
 
@@ -530,12 +530,12 @@ Request body:
 
 ```json
 {
-  "sensorName": "Pond A - West",
-  "location": {
-    "longitude": 106.63,
-    "latitude": 10.82
-  },
-  "status": "ONLINE"
+    "sensorName": "Pond A - West",
+    "location": {
+        "longitude": 106.63,
+        "latitude": 10.82
+    },
+    "status": "ONLINE"
 }
 ```
 
@@ -549,20 +549,20 @@ Response `200`
 
 ```json
 {
-  "message": "Sensor station updated successfully",
-  "sensor": {
-    "_id": "6813d2e88f1d9d8f8f8f8f90",
-    "sensorName": "Pond A - West",
-    "userId": "6813d17e8f1d9d8f8f8f8f8f",
-    "location": {
-      "longitude": 106.63,
-      "latitude": 10.82
-    },
-    "status": "ONLINE",
-    "isDeleted": false,
-    "dateCreated": "2026-05-01T16:00:00.000Z",
-    "lastDateUpdate": "2026-05-01T16:40:00.000Z"
-  }
+    "message": "Sensor station updated successfully",
+    "sensor": {
+        "_id": "6813d2e88f1d9d8f8f8f8f90",
+        "sensorName": "Pond A - West",
+        "userId": "6813d17e8f1d9d8f8f8f8f8f",
+        "location": {
+            "longitude": 106.63,
+            "latitude": 10.82
+        },
+        "status": "ONLINE",
+        "isDeleted": false,
+        "dateCreated": "2026-05-01T16:00:00.000Z",
+        "lastDateUpdate": "2026-05-01T16:40:00.000Z"
+    }
 }
 ```
 
@@ -574,20 +574,20 @@ Response `200`
 
 ```json
 {
-  "message": "Sensor station deleted successfully",
-  "sensor": {
-    "_id": "6813d2e88f1d9d8f8f8f8f90",
-    "sensorName": "Pond A",
-    "userId": "6813d17e8f1d9d8f8f8f8f8f",
-    "location": {
-      "longitude": 106.6297,
-      "latitude": 10.8231
-    },
-    "status": "ONLINE",
-    "isDeleted": true,
-    "dateCreated": "2026-05-01T16:00:00.000Z",
-    "lastDateUpdate": "2026-05-01T16:50:00.000Z"
-  }
+    "message": "Sensor station deleted successfully",
+    "sensor": {
+        "_id": "6813d2e88f1d9d8f8f8f8f90",
+        "sensorName": "Pond A",
+        "userId": "6813d17e8f1d9d8f8f8f8f8f",
+        "location": {
+            "longitude": 106.6297,
+            "latitude": 10.8231
+        },
+        "status": "ONLINE",
+        "isDeleted": true,
+        "dateCreated": "2026-05-01T16:00:00.000Z",
+        "lastDateUpdate": "2026-05-01T16:50:00.000Z"
+    }
 }
 ```
 
@@ -603,36 +603,36 @@ Returns the latest sensor data document.
 
 Query parameters:
 
-| Name | Type | Required | Notes |
-|---|---|---|---|
-| `sensor_id` | string | no | If omitted, returns the latest document across all sensors |
+| Name        | Type   | Required | Notes                                                      |
+| ----------- | ------ | -------- | ---------------------------------------------------------- |
+| `sensor_id` | string | no       | If omitted, returns the latest document across all sensors |
 
 Response `200`
 
 ```json
 {
-  "id": "6813d6108f1d9d8f8f8f8fa0",
-  "sensor_id": "6813d2e88f1d9d8f8f8f8f90",
-  "created_at": "2026-05-01T16:55:00+00:00",
-  "quality_label": "Good",
-  "quality_name": "Good Water",
-  "solution": "Consider treatment.",
-  "sensor_data": {
-    "pH": 7.2,
-    "Temp": 29.4,
-    "DO": 6.8,
-    "Turbidity": 12.1,
-    "Hardness": 102.0,
-    "Alkalinity": 95.0,
-    "Ammonia": 0.1,
-    "BOD": 2.3,
-    "CO2": 4.4,
-    "Calcium": 22.0,
-    "H2S": 0.0,
-    "Nitrite": 0.03,
-    "Phosphorus": 0.2,
-    "Plankton": 3.1
-  }
+    "id": "6813d6108f1d9d8f8f8f8fa0",
+    "sensor_id": "6813d2e88f1d9d8f8f8f8f90",
+    "created_at": "2026-05-01T16:55:00+00:00",
+    "quality_label": "Good",
+    "quality_name": "Good Water",
+    "solution": "Consider treatment.",
+    "sensor_data": {
+        "pH": 7.2,
+        "Temp": 29.4,
+        "DO": 6.8,
+        "Turbidity": 12.1,
+        "Hardness": 102.0,
+        "Alkalinity": 95.0,
+        "Ammonia": 0.1,
+        "BOD": 2.3,
+        "CO2": 4.4,
+        "Calcium": 22.0,
+        "H2S": 0.0,
+        "Nitrite": 0.03,
+        "Phosphorus": 0.2,
+        "Plankton": 3.1
+    }
 }
 ```
 
@@ -646,38 +646,38 @@ Returns a classification view derived from the latest sensor data.
 
 Query parameters:
 
-| Name | Type | Required | Notes |
-|---|---|---|---|
-| `sensor_id` | string | no | If omitted, uses the latest document across all sensors |
+| Name        | Type   | Required | Notes                                                   |
+| ----------- | ------ | -------- | ------------------------------------------------------- |
+| `sensor_id` | string | no       | If omitted, uses the latest document across all sensors |
 
 Response `200`
 
 ```json
 {
-  "sensor_id": "6813d2e88f1d9d8f8f8f8f90",
-  "created_at": "2026-05-01T16:55:00+00:00",
-  "overall_quality": "Good Water",
-  "hardness": {
-    "category": "Moderately Hard",
-    "value_mgl": 102.0,
-    "threshold_mgl": 150.0
-  },
-  "salinity": {
-    "level": "Slightly Saline",
-    "turbidity_ntu": 12.1,
-    "note": "Server-generated classification note"
-  },
-  "alkalinity": {
-    "level": "Moderate",
-    "value_mgl": 95.0,
-    "safe_range": "80-120 mg/L"
-  },
-  "temperature": {
-    "status": "Safe",
-    "value_celsius": 29.4
-  },
-  "ph": 7.2,
-  "do": 6.8
+    "sensor_id": "6813d2e88f1d9d8f8f8f8f90",
+    "created_at": "2026-05-01T16:55:00+00:00",
+    "overall_quality": "Good Water",
+    "hardness": {
+        "category": "Moderately Hard",
+        "value_mgl": 102.0,
+        "threshold_mgl": 150.0
+    },
+    "salinity": {
+        "level": "Slightly Saline",
+        "turbidity_ntu": 12.1,
+        "note": "Server-generated classification note"
+    },
+    "alkalinity": {
+        "level": "Moderate",
+        "value_mgl": 95.0,
+        "safe_range": "80-120 mg/L"
+    },
+    "temperature": {
+        "status": "Safe",
+        "value_celsius": 29.4
+    },
+    "ph": 7.2,
+    "do": 6.8
 }
 ```
 
@@ -697,51 +697,51 @@ Returns trend and comparison data for sensors owned by the authenticated user.
 
 Query parameters:
 
-| Name | Type | Required | Notes |
-|---|---|---|---|
-| `date` | `YYYY-MM-DD` | no | If omitted, the backend uses yesterday in the configured analytics timezone |
+| Name   | Type         | Required | Notes                                                                       |
+| ------ | ------------ | -------- | --------------------------------------------------------------------------- |
+| `date` | `YYYY-MM-DD` | no       | If omitted, the backend uses yesterday in the configured analytics timezone |
 
 Response `200`
 
 ```json
 {
-  "userId": "6813d17e8f1d9d8f8f8f8f8f",
-  "dateRange": {
-    "startTime": "2026-05-01T00:00:00+07:00",
-    "endTime": "2026-05-02T00:00:00+07:00"
-  },
-  "phTrend": [
-    {
-      "time": "00:00",
-      "value": 7.12
-    }
-  ],
-  "temperatureTrend": [
-    {
-      "time": "00:00",
-      "value": 29.4
-    }
-  ],
-  "conductivityTrend": [
-    {
-      "time": "00:00",
-      "value": null
-    }
-  ],
-  "dissolvedOxygenTrend": [
-    {
-      "time": "00:00",
-      "value": 6.8
-    }
-  ],
-  "turbidityComparison": [
-    {
-      "sensorId": "6813d2e88f1d9d8f8f8f8f90",
-      "sensorName": "Pond A",
-      "address": null,
-      "value": 12.1
-    }
-  ]
+    "userId": "6813d17e8f1d9d8f8f8f8f8f",
+    "dateRange": {
+        "startTime": "2026-05-01T00:00:00+07:00",
+        "endTime": "2026-05-02T00:00:00+07:00"
+    },
+    "phTrend": [
+        {
+            "time": "00:00",
+            "value": 7.12
+        }
+    ],
+    "temperatureTrend": [
+        {
+            "time": "00:00",
+            "value": 29.4
+        }
+    ],
+    "conductivityTrend": [
+        {
+            "time": "00:00",
+            "value": null
+        }
+    ],
+    "dissolvedOxygenTrend": [
+        {
+            "time": "00:00",
+            "value": 6.8
+        }
+    ],
+    "turbidityComparison": [
+        {
+            "sensorId": "6813d2e88f1d9d8f8f8f8f90",
+            "sensorName": "Pond A",
+            "address": null,
+            "value": 12.1
+        }
+    ]
 }
 ```
 
@@ -794,21 +794,20 @@ Request body:
 
 ```json
 {
-  "sensorId": "6813d2e88f1d9d8f8f8f8f90",
-  "Temp": 29.4,
-  "Turbidity": 12.1,
-  "DO": 6.8,
-  "BOD": 2.3,
-  "CO2": 4.4,
-  "pH": 7.2,
-  "Alkalinity": 95.0,
-  "Hardness": 102.0,
-  "Calcium": 22.0,
-  "Ammonia": 0.1,
-  "Nitrite": 0.03,
-  "Phosphorus": 0.2,
-  "H2S": 0.0,
-  "Plankton": 3.1
+    "sensorId": "6813d2e88f1d9d8f8f8f8f90",
+    "Nhiệt độ": 29.4,
+    "pH": 7.2,
+    "DO": 6.8,
+    "Độ dẫn": 120.0,
+    "Độ kiềm": 95.0,
+    "N-NO2": 0.03,
+    "N-NH4": 0.1,
+    "P-PO4": 0.2,
+    "H2S": 0.0,
+    "TSS": 12.1,
+    "COD": 18.0,
+    "Aeromonas tổng số": 120.0,
+    "Coliform": 4300.0
 }
 ```
 
@@ -828,73 +827,73 @@ Response `200`
 
 ```json
 {
-  "best_model": "RandomForest",
-  "models": [
-    {
-      "model": "RandomForest",
-      "accuracy": 0.94,
-      "confidence": 91.3,
-      "wqi": {
-        "prediction": 1,
-        "score": 76.4,
-        "label": "Good"
-      },
-      "risk": {
-        "status": "Medium Risk",
-        "level": 1
-      },
-      "forecast_24h": {
-        "trend": "Stable",
-        "predicted_wqi_range": [73.4, 79.4],
-        "model_used": "RandomForest",
-        "confidence_score": 91.3
-      }
+    "best_model": "RandomForest",
+    "models": [
+        {
+            "model": "RandomForest",
+            "accuracy": 0.94,
+            "confidence": 91.3,
+            "wqi": {
+                "prediction": 1,
+                "score": 76.4,
+                "label": "Good"
+            },
+            "risk": {
+                "status": "Medium Risk",
+                "level": 1
+            },
+            "forecast_24h": {
+                "trend": "Stable",
+                "predicted_wqi_range": [73.4, 79.4],
+                "model_used": "RandomForest",
+                "confidence_score": 91.3
+            }
+        }
+    ],
+    "ensemble": {
+        "wqi": {
+            "score": 74.8,
+            "label": "Good"
+        },
+        "risk": {
+            "status": "Medium Risk",
+            "level": 1
+        },
+        "confidence": 88.7,
+        "forecast_24h": {
+            "trend": "Stable",
+            "predicted_wqi_range": [71.8, 77.8]
+        }
+    },
+    "summary": {
+        "wqi": {
+            "prediction": 1,
+            "score": 76.4,
+            "label": "Good"
+        },
+        "risk": {
+            "status": "Medium Risk",
+            "level": 1
+        },
+        "accuracy": 0.94,
+        "forecast_24h": {
+            "trend": "Stable",
+            "predicted_wqi_range": [73.4, 79.4],
+            "model_used": "RandomForest",
+            "confidence_score": 91.3
+        },
+        "confidence": 91.3,
+        "solution": "Markdown text generated by the AI solution service.",
+        "weather": {
+            "has_rain": false,
+            "total_precipitation_mm": 0,
+            "avg_temperature_c": 29.0,
+            "avg_cloud_cover_pct": 45,
+            "max_wind_speed_kmh": 9,
+            "avg_humidity_pct": 74,
+            "max_uv_index": 7
+        }
     }
-  ],
-  "ensemble": {
-    "wqi": {
-      "score": 74.8,
-      "label": "Good"
-    },
-    "risk": {
-      "status": "Medium Risk",
-      "level": 1
-    },
-    "confidence": 88.7,
-    "forecast_24h": {
-      "trend": "Stable",
-      "predicted_wqi_range": [71.8, 77.8]
-    }
-  },
-  "summary": {
-    "wqi": {
-      "prediction": 1,
-      "score": 76.4,
-      "label": "Good"
-    },
-    "risk": {
-      "status": "Medium Risk",
-      "level": 1
-    },
-    "accuracy": 0.94,
-    "forecast_24h": {
-      "trend": "Stable",
-      "predicted_wqi_range": [73.4, 79.4],
-      "model_used": "RandomForest",
-      "confidence_score": 91.3
-    },
-    "confidence": 91.3,
-    "solution": "Markdown text generated by the AI solution service.",
-    "weather": {
-      "has_rain": false,
-      "total_precipitation_mm": 0,
-      "avg_temperature_c": 29.0,
-      "avg_cloud_cover_pct": 45,
-      "max_wind_speed_kmh": 9,
-      "avg_humidity_pct": 74,
-      "max_uv_index": 7
-    }
-  }
 }
 ```
 
@@ -920,22 +919,22 @@ Request body:
 
 ```json
 {
-  "sensorId": "6813d2e88f1d9d8f8f8f8f90",
-  "createdAt": "2026-05-01T16:55:00Z",
-  "Temp": 29.4,
-  "Turbidity": 12.1,
-  "DO": 6.8,
-  "BOD": 2.3,
-  "CO2": 4.4,
-  "pH": 7.2,
-  "Alkalinity": 95.0,
-  "Hardness": 102.0,
-  "Calcium": 22.0,
-  "Ammonia": 0.1,
-  "Nitrite": 0.03,
-  "Phosphorus": 0.2,
-  "H2S": 0.0,
-  "Plankton": 3.1
+    "sensorId": "6813d2e88f1d9d8f8f8f8f90",
+    "createdAt": "2026-05-01T16:55:00Z",
+    "Temp": 29.4,
+    "Turbidity": 12.1,
+    "DO": 6.8,
+    "BOD": 2.3,
+    "CO2": 4.4,
+    "pH": 7.2,
+    "Alkalinity": 95.0,
+    "Hardness": 102.0,
+    "Calcium": 22.0,
+    "Ammonia": 0.1,
+    "Nitrite": 0.03,
+    "Phosphorus": 0.2,
+    "H2S": 0.0,
+    "Plankton": 3.1
 }
 ```
 
@@ -956,28 +955,27 @@ Response `200`
 
 ```json
 [
-  {
-    "id": "6813d7018f1d9d8f8f8f8fa1",
-    "idSensor": "6813d2e88f1d9d8f8f8f8f90",
-    "Temp": 29.4,
-    "Turbidity": 12.1,
-    "DO": 6.8,
-    "BOD": 2.3,
-    "CO2": 4.4,
-    "pH": 7.2,
-    "Alkalinity": 95.0,
-    "Hardness": 102.0,
-    "Calcium": 22.0,
-    "Ammonia": 0.1,
-    "Nitrite": 0.03,
-    "Phosphorus": 0.2,
-    "H2S": 0.0,
-    "Plankton": 3.1,
-    "prediction": {
-      "best_model": "RandomForest"
-    },
-    "created_at": "2026-05-01T16:55:00+00:00"
-  }
+    {
+        "id": "6813d7018f1d9d8f8f8f8fa1",
+        "idSensor": "6813d2e88f1d9d8f8f8f8f90",
+        "Nhiệt độ": 29.4,
+        "pH": 7.2,
+        "DO": 6.8,
+        "Độ dẫn": 120.0,
+        "Độ kiềm": 95.0,
+        "N-NO2": 0.03,
+        "N-NH4": 0.1,
+        "P-PO4": 0.2,
+        "H2S": 0.0,
+        "TSS": 12.1,
+        "COD": 18.0,
+        "Aeromonas tổng số": 120.0,
+        "Coliform": 4300.0,
+        "prediction": {
+            "best_model": "RandomForest"
+        },
+        "created_at": "2026-05-01T16:55:00+00:00"
+    }
 ]
 ```
 
@@ -997,24 +995,24 @@ Returns alert items for sensors owned by the authenticated user.
 
 Query parameters:
 
-| Name | Type | Default | Notes |
-|---|---|---|---|
+| Name     | Type   | Default  | Notes                                                                                                  |
+| -------- | ------ | -------- | ------------------------------------------------------------------------------------------------------ |
 | `status` | string | `unread` | Only `unread` triggers server-side filtering. Any other value effectively returns all matching alerts. |
 
 Response `200`
 
 ```json
 [
-  {
-    "id": "6813d8e78f1d9d8f8f8f8fb0",
-    "wqi_score": 28.4,
-    "contamination_risk": "High Risk",
-    "message": "WQI: 28.4, Risk: High Risk",
-    "status": "unread",
-    "time_ago": "5 minute(s) ago",
-    "created_at": "2026-05-01T16:55:00+00:00",
-    "level": "Critical"
-  }
+    {
+        "id": "6813d8e78f1d9d8f8f8f8fb0",
+        "wqi_score": 28.4,
+        "contamination_risk": "High Risk",
+        "message": "WQI: 28.4, Risk: High Risk",
+        "status": "unread",
+        "time_ago": "5 minute(s) ago",
+        "created_at": "2026-05-01T16:55:00+00:00",
+        "level": "Critical"
+    }
 ]
 ```
 
@@ -1022,9 +1020,9 @@ Notes:
 
 - If the authenticated user owns no sensors, the response is `[]`
 - `level` is derived as follows:
-  - `Critical` when `wqi_score < 30` or `contamination_risk == "Critical"`
-  - `Warning` when `wqi_score < 50` or `contamination_risk == "High Risk"`
-  - `Info` otherwise
+    - `Critical` when `wqi_score < 30` or `contamination_risk == "Critical"`
+    - `Warning` when `wqi_score < 50` or `contamination_risk == "High Risk"`
+    - `Info` otherwise
 
 ### PUT `/api/v1/alerts/{alert_id}/read`
 
@@ -1034,7 +1032,7 @@ Response `200`
 
 ```json
 {
-  "message": "Alert marked as read"
+    "message": "Alert marked as read"
 }
 ```
 
@@ -1042,7 +1040,7 @@ Alternative successful response `200`
 
 ```json
 {
-  "message": "Alert was already marked as read"
+    "message": "Alert was already marked as read"
 }
 ```
 
@@ -1060,7 +1058,7 @@ Response `200`
 
 ```json
 {
-  "enabled": true
+    "enabled": true
 }
 ```
 
@@ -1072,7 +1070,7 @@ Request body:
 
 ```json
 {
-  "enabled": false
+    "enabled": false
 }
 ```
 
@@ -1080,8 +1078,8 @@ Response `200`
 
 ```json
 {
-  "message": "Email alert settings updated successfully",
-  "enabled": false
+    "message": "Email alert settings updated successfully",
+    "enabled": false
 }
 ```
 

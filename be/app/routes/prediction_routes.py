@@ -40,9 +40,15 @@ def train_model():
 
 @prediction_bp.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
-    sensor_id = data.get("sensorId") or data.get("idSensor")
+    try:
+        data = validate_predict_request(data)
+    except ValidationError as exc:
+        return jsonify({"error": str(exc)}), 400
+
+    # sensor_id = data.get("sensorId") or data.get("idSensor")
+    sensor_id = "69ea674c5d325453fddc1733"
 
     if sensor_id:
         status = sensor_health.check_and_update(sensor_id, data)
@@ -51,11 +57,7 @@ def predict():
             firmware_error = data.get("error")
             error_msg = firmware_error if firmware_error else "Invalid sensor data (all values = 0)"
             return jsonify({"error": error_msg}), 400
-        
-    try:
-        data = validate_predict_request(request.get_json(silent=True))
-    except ValidationError as exc:
-        return jsonify({"error": str(exc)}), 400
+
     return _run_prediction_request(data, created_at=utc_now())
 
 
@@ -116,8 +118,24 @@ def _run_prediction_request(data: dict, *, created_at: datetime):
 
 def _save_prediction(data: dict, result: dict, *, created_at: datetime) -> None:
     normalized_created_at = ensure_utc_datetime(created_at)
-    raw_sensor_id = data.get("sensorId") or data.get("idSensor")
+    raw_sensor_id = data.get("sensorId") or data.get("idSensor") or "69ea674c5d325453fddc1733"
     sensor_reference = normalize_object_id_reference(raw_sensor_id)
+
+    dataset_fields = [
+        "Nhiệt độ",
+        "pH",
+        "DO",
+        "Độ dẫn",
+        "Độ kiềm",
+        "N-NO2",
+        "N-NH4",
+        "P-PO4",
+        "H2S",
+        "TSS",
+        "COD",
+        "Aeromonas tổng số",
+        "Coliform",
+    ]
 
     try:
         db = get_mongo_database()
@@ -125,24 +143,12 @@ def _save_prediction(data: dict, result: dict, *, created_at: datetime) -> None:
             return
 
         coll = db.get_collection("predictions")
-        doc = {
-            "Temp": float(data.get("Temp", 0)),
-            "Turbidity": float(data.get("Turbidity", 0)),
-            "DO": float(data.get("DO", 0)),
-            "BOD": float(data.get("BOD", 0)),
-            "CO2": float(data.get("CO2", 0)),
-            "pH": float(data.get("pH", 0)),
-            "Alkalinity": float(data.get("Alkalinity", 0)),
-            "Hardness": float(data.get("Hardness", 0)),
-            "Calcium": float(data.get("Calcium", 0)),
-            "Ammonia": float(data.get("Ammonia", 0)),
-            "Nitrite": float(data.get("Nitrite", 0)),
-            "Phosphorus": float(data.get("Phosphorus", 0)),
-            "H2S": float(data.get("H2S", 0)),
-            "Plankton": float(data.get("Plankton", 0)),
-            "prediction": result,
-            "created_at": normalized_created_at,
-        }
+        # Normalize field names to canonical Vietnamese names before saving
+        normalized_data = ai_service.normalize_sensor_data(data)
+        doc = {field: float(normalized_data.get(field, 0)) for field in dataset_fields}
+        print(f"Normalized data for saving: {doc}")
+        doc["prediction"] = result
+        doc["created_at"] = normalized_created_at
         if sensor_reference is not None:
             doc["idSensor"] = sensor_reference
         insert_result = coll.insert_one(doc)
@@ -166,7 +172,7 @@ def _save_prediction(data: dict, result: dict, *, created_at: datetime) -> None:
                 f"{summary['forecast_24h']['predicted_wqi_range'][1]}"
             ),
             confidence=summary["forecast_24h"]["confidence_score"],
-            message=f"WQI: {wqi_score}, Risk: {risk_status}",
+            message=f"WQI: {(wqi_score):.2f}, Risk: {risk_status}",
             input_sensor_id=saved_prediction_id,
             id_sensor=actual_sensor_id,
             timestamp=normalized_created_at,
